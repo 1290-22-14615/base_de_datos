@@ -1,20 +1,34 @@
 
-#include <mysql.h>
+#include "clientes.h"
 #include <iostream>
-using namespace std;
+using namespace  std;
+
 int main()
 {
-    MYSQL* conectar;
-    conectar = mysql_init(0);
-    conectar = mysql_real_connect(conectar, "localhost", "usr_empresa", "Empres@123", "db_empresa", 3306, NULL, 0);
-    if (conectar) {
-        cout << "conexion Exitosa..." << endl;
-    }
-    else {
-        cout << "error de conexion..." << endl;
-    }
-    system("pause");
 
-    return 0;
+	string nit, nombres, apellidos, direccion, fecha_nacimiento;
+	int telefono;
+	cout << "Ingrese Nit:";
+	getline(cin, nit);
+	cout << "Ingrese Nombres:";
+	getline(cin, nombres);
+	cout << "Ingrese Apellidos:";
+	getline(cin, apellidos);
+	cout << "Ingrese Direccion:";
+	getline(cin, direccion);
+	cout << "Ingrese Telefono:";
+	cin >> telefono;
+	cin.ignore();
+	cout << "Fecha Nacimiento:";
+	cin >> fecha_nacimiento;
+
+	Cliente c = Cliente(nombres, apellidos, direccion, telefono, fecha_nacimiento, nit);
+
+	c.crear();
+	c.leer();
+
+	system("pause");
+	return 0;
+
 }
 
